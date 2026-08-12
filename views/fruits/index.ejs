@@ -5,16 +5,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Document</title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+
 </head>
 
 <body>
-  <a href="/">Home Page</a>
-  <a href="/fruits">Browse Fruits</a>
-  <a href="/fruits/new">Add New Fruit</a>
-  <h1>All Fruits</h1>
+  <a href="/" class="fruits-index-link">
+    <div class="fruits-link-text">Home Page</div>
+  </a>
+  <a href="/fruits" class="fruits-index-link">
+    <div class="fruits-link-text">Browse Fruits</div>
+  </a>
+  <a href="/fruits/new" class="fruits-index-link">
+    <div class="add-fruit">Add New Fruit</div>
+  </a>
+  <div class="index-header-div">
+    <h1>All Fruits</h1>
+  </div>
   <ul>
     <% fruits.forEach((fruit)=>{  %>
-    <a href="/fruits/<%= fruit._id %>" class="">
+    <a href="/fruits/<%= fruit._id %>" class="fruit-cards">
 
       <li> <%= fruit.name %> </li>
     </a>

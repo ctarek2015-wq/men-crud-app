@@ -2,12 +2,14 @@ require("dotenv").config();
 const express = require("express");
 
 const methodOverride = require("method-override");
+const path = require("path");
 
 const app = express();
 const mongoose = require("mongoose");
 
 const morgan = require("morgan");
 
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 app.use(morgan("dev"));

@@ -4,25 +4,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title><%= fruit.name %></title> <!-- Dynamic title based on fruit name -->
+  <title><%= fruit.name %></title>
+  <link rel="stylesheet" href="/stylesheets/style.css" />
+  <!-- Dynamic title based on fruit name -->
 </head>
 
-<a href="/">Home Page</a>
-<a href="/fruits">Browse Fruits</a>
-<a href="/fruits/new">Add New Fruit</a>
+<a href="/" class="fruits-index-link">
+  <div class="fruits-link-text">Home Page</div>
+</a>
+<a href="/fruits" class="fruits-index-link">
+  <div class="fruits-link-text">Browse Fruits</div>
+</a>
+<a href="/fruits/new" class="fruits-index-link">
+  <div class="fruits-link-text">Add New Fruit</div>
+</a>
 
 <body>
-  <h1><%= fruit.name %></h1>
-  <!-- Conditional rendering based on fruit's readiness -->
-  <% if (fruit.isReadyToEat) { %>
-  <p>This fruit is ready to eat!</p>
-  <% } else { %>
-  <p>This fruit is not ready to eat!</p>
-  <% } %>
-  <form action="/fruits/<%=fruit._id%>?_method=DELETE" method="post">
-    <button type="submit">Delete</button>
-  </form>
-  <a href="/fruits/<%=fruit._id%>/edit">Edit <%=fruit.name%></a>
+  <div class="fruit-details">
+    <h1><%= fruit.name %></h1>
+    <% if (fruit.isReadyToEat) { %>
+    <p>This fruit is ready to eat!</p>
+    <% } else { %>
+    <p>This fruit is not ready to eat!</p>
+    <% } %>
+    <div class="fruit-actions">
+      <form action="/fruits/<%=fruit._id%>?_method=DELETE" method="post">
+        <button type="submit">Delete</button>
+      </form>
+      <a href="/fruits/<%=fruit._id%>/edit">Edit <%=fruit.name%></a>
+    </div>
+  </div>
 
 </body>
 
