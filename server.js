@@ -4,6 +4,10 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 
+const morgan = require("morgan");
+app.use(morgan("dev"));
+app.use(express.urlencoded({ extended: false }));
+
 app.listen(3000, () => {
   console.log("Listening on port 3000");
 });
@@ -21,6 +25,32 @@ app.get("/", async (req, res) => {
   res.render("index.ejs");
 });
 
-app.get("/fruits/new", (req, res) => {
+app.get("/fruits", async (req, res) => {
+  try {
+    const fruits = await Fruit.find();
+    res.send(fruits);
+  } catch (err) {
+    console.log(err.message);
+    res.send("failed to get all fruits");
+  }
+});
+
+app.get("/fruits/new", async (req, res) => {
   res.render("fruits/new.ejs");
+});
+
+app.post("/fruits", async (req, res) => {
+  try {
+    if (req.body.isReadyToEat === "on") {
+      req.body.isReadyToEat = true;
+    } else {
+      req.body.isReadyToEat = false;
+    }
+    await Fruit.create(req.body);
+
+    res.redirect("/fruits");
+  } catch (err) {
+    console.log(err.message);
+    res.send("failed to create");
+  }
 });
