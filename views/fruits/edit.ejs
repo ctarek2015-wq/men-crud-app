@@ -12,16 +12,19 @@
 </head>
 
 <body>
+  <div class="nav">
+    <a href="/" class="fruits-index-link">
+      <div class="fruits-link-text">Home Page</div>
+    </a>
+    <a href="/fruits/<%=fruit._id%>" class="fruits-index-link">
+      <div class="fruits-link-text">back to <%=fruit.name%></div>
+    </a>
+    <a href="/fruits/new" class="fruits-index-link">
+      <div class="fruits-link-text">Add New Fruit</div>
+    </a>
 
-  <a href="/" class="fruits-index-link">
-    <div class="fruits-link-text">Home Page</div>
-  </a>
-  <a href="/fruits/<%=fruit._id%>" class="fruits-index-link">
-    <div class="fruits-link-text">back to <%=fruit.name%></div>
-  </a>
-  <a href="/fruits/new" class="fruits-index-link">
-    <div class="fruits-link-text">Add New Fruit</div>
-  </a>
+  </div>
+
 
   <h1>Editing <%=fruit.name%></h1>
 
